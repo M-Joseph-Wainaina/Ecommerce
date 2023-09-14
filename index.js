@@ -5,11 +5,13 @@ const dbConnect = require("./config/dbConnect.js");
 const authRouter = require("./routes/authRoutes.js");
 const bodyParser = require('body-parser');
 const { notFound, errorHandler } = require("./middlewares/errorHandler");
+const cookieParser = require('cookie-parser');
 
 
 dbConnect();
 const PORT = process.env.PORT || 4000;
 
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
